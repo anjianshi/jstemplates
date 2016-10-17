@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 
 const htmlPlugin = new HtmlWebpackPlugin({
-    path: env.dist + '/renderer'
+    path: env.dist + '/renderer',
     filename: 'index.html',
     template: env.src + '/renderer/index.html',
     inject: false,

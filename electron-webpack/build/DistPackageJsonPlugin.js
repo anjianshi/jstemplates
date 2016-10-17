@@ -16,7 +16,7 @@ DistPackageJsonPlugin.prototype.apply = function(compiler) {
         pkg.dependencies = mainDependencies
         const content = JSON.stringify(pkg)
 
-        compilation.assets['package.json'] = {
+        compilation.assets['../package.json'] = {
             source: () => content,
             size: () => content.length,
         }

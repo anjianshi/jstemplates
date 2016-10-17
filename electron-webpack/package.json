@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "npm run clear && npm run compile-main && npm run compile-renderer && npm run dist-install-deps",
     "compile-hmr": "npm run clear && npm run compile-main-hmr && npm run dist-install-deps && npm run compile-renderer-hmr",
-    "start": "electron var/app_dist/main.js",
+    "start": "electron var/app_dist/main/index.js",
     "compile-and-start": "npm run compile && npm run start",
     "package": "PLATFORM=linux npm run raw-package",
     "package-win": "PLATFORM=win32 npm run raw-package",

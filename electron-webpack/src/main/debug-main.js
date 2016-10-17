@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { BrowserWindow, ipcMain } from 'electron'
 
 // 提供方便的调试功能。需要在 renderer 中进行配合才能工作。
 export function enhanceDebug(win) {

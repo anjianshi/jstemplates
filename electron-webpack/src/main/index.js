@@ -1,4 +1,5 @@
-import { supportDebug } from './debug-main'
+import { app, BrowserWindow} from 'electron'
+import { enhanceDebug } from './debug-main'
 
 app.on('ready', () => {
     const win = new BrowserWindow({ width: 1024, height: 768 })
