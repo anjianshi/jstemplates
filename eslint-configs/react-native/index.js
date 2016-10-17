@@ -3,7 +3,7 @@
 
 // 依赖： eslint-plugin-react-native，以及上级 rules 文件的依赖
 module.exports = {
-    "extends": ["./react"],
+    "extends": ['anjianshi-react'],
 
     "plugins": ["react-native"],
 

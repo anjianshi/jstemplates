@@ -1,10 +1,8 @@
 /*eslint-env node*/
 'use strict';
 
-// 使用了 babel 的情况下的 rules
-// 依赖： babel-eslint
 module.exports = {
-    extends: './base',
+    extends: 'anjianshi-base',
 
     parser: 'babel-eslint',
 
