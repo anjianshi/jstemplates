@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-anjianshi-std",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": ["eslint", "eslintconfig"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslintrc",
     "license": "MIT",
