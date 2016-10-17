@@ -4,7 +4,13 @@ import "./debug-renderer"
 import React from 'react'
 import { render } from "react-dom"
 
+class App extends React.Component {
+    render() {
+        return <div>Hello, world!</div>
+    }
+}
+
 render(
-    <div>Hello, world!</div>,
+    <App />,
     document.getElementById("root")
 )

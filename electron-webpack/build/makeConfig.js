@@ -15,7 +15,7 @@ exports.makeWebpackConfig = function makeWebpackConfig(overrideConfigs={}, suppo
             new webpack.DefinePlugin({
                 "process.env": {
                     NODE_ENV: JSON.stringify(env.dev ? "development" : "production"),
-                    HMR: env.hmr && supportHMR ? '1' : '0',
+                    HMR: JSON.stringify(env.hmr ? '1' : '0'),
                 }
             })
         ]
