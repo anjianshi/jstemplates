@@ -42,17 +42,11 @@ exports.makeWebpackConfig = function makeWebpackConfig(overrideConfigs={}, suppo
 
 
 function makeBabelConfig() {
-    const babelPlugins = [
-        "transform-object-rest-spread", "transform-export-extensions", "syntax-trailing-function-commas",
-        "transform-decorators-legacy", "transform-class-properties",
-        "jsx-control-statements"
-    ]
     const compileConfig = {
         // 开启 cache 可以加快二次编译时的编译速度，但也有可能因使用了过时的缓存导致页面出现 bug。
         // 因此生产环境中应把此功能关闭。
         cacheDirectory: env.dev,
-        presets: ["es2015", "react"],
-        plugins: babelPlugins
+        presets: ['anjianshi-react']
     }
     const loaderUri = 'babel?' + JSON.stringify(compileConfig)
     const loader = { test: /\.js$/, exclude: /node_modules/, loader: loaderUri }
