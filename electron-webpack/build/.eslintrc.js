@@ -1,8 +1,8 @@
 /*eslint-env node*/
-"use strict";
+'use strict'
 
 module.exports = {
-    "env": {
-        "node": true,
+    env: {
+        node: true,
     },
 };

@@ -1,12 +1,14 @@
 /*eslint-env node*/
-"use strict";
+'use strict'
 
 module.exports = {
-    "env": {
+    extends: ['anjianshi-react'],
+
+    env: {
         "browser": true,
     },
 
-    "globals": {
-        "require": true,
+    globals: {
+        require: true,
     }
 };
