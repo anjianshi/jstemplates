@@ -19,6 +19,7 @@ const htmlPlugin = new HtmlWebpackPlugin({
 module.exports = makeWebpackConfig({
     context: env.src + '/renderer',
     entry: _.compact([
+        env.hmr && 'react-hot-loader/patch',
         env.hmr && 'webpack-hot-middleware/client',
         'babel-polyfill',
         env.src + '/renderer/index.js',

@@ -33,33 +33,20 @@ exports.makeWebpackConfig = function makeWebpackConfig(overrideConfigs={}, suppo
         ])
     }
 
-    merge(config, makeBabelConfig(supportHMR))
-    merge(config, makeStyleConfig(supportHMR))
+    merge(config, makeBabelConfig())
+    merge(config, makeStyleConfig())
     merge(config, overrideConfigs)
 
     return config
 }
 
 
-function makeBabelConfig(supportHMR) {
+function makeBabelConfig() {
     const babelPlugins = [
         "transform-object-rest-spread", "transform-export-extensions", "syntax-trailing-function-commas",
         "transform-decorators-legacy", "transform-class-properties",
         "jsx-control-statements"
     ]
-    if(env.hmr && supportHMR) {
-        babelPlugins.push(["react-transform", {
-            transforms: [{
-                transform: "react-transform-hmr",
-                imports: ["react"],
-                locals: ["module"]
-            }, {
-                transform: "react-transform-catch-errors",
-                imports: ["react", "redbox-react"],
-            }]
-        }])
-    }
-
     const compileConfig = {
         // 开启 cache 可以加快二次编译时的编译速度，但也有可能因使用了过时的缓存导致页面出现 bug。
         // 因此生产环境中应把此功能关闭。
@@ -78,13 +65,13 @@ function makeBabelConfig(supportHMR) {
 }
 
 
-function makeStyleConfig(supportHMR) {
+function makeStyleConfig() {
     // 在 hmr 状态下，启用 sourceMap 会导致 css 中的 url() 引用不正常
     const localIdentName = 'localIdentName=_[local]__[hash:base64:8]'
     return {
         module: {
             loaders: [
-                 { test: /\.styl$/, loader: `style!css?${env.hmr && supportHMR ? 'sourceMap&' : ''}${localIdentName}!stylus` },
+                 { test: /\.styl$/, loader: `style!css?${env.hmr ? 'sourceMap&' : ''}${localIdentName}!stylus` },
             ]
         },
     }

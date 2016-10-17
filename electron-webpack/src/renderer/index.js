@@ -3,14 +3,20 @@ import "./debug-renderer"
 
 import React from 'react'
 import { render } from "react-dom"
-
-class App extends React.Component {
-    render() {
-        return <div>Hello, world!</div>
-    }
-}
+import { App } from './App'
 
 render(
     <App />,
     document.getElementById("root")
 )
+
+if(module.hot) {
+    module.hot.accept('./App', () => {
+        const App = require('./App').App;
+
+        render(
+            <App />,
+            document.getElementById("root")
+        )
+    })
+}
