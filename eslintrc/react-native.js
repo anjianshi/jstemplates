@@ -1,6 +1,7 @@
 /*eslint-env node*/
 "use strict";
 
+// 依赖： eslint-plugin-react-native，以及上级 rules 文件的依赖
 module.exports = {
     "extends": ["./react"],
 

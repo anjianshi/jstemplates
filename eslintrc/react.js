@@ -2,6 +2,7 @@
 'use strict';
 
 // babel + react + jsx-control-statements 环境下的 rules
+// 依赖： eslint-plugin-react, eslint-plugin-jsx-control-statements，以及上级 rules 文件的依赖
 module.exports = {
     extends: './babel',
 
