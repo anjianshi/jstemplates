@@ -1,13 +1,13 @@
 {
     "name": "eslint-config-anjianshi-react",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": ["eslint", "eslintconfig"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslint-config/react",
     "license": "MIT",
     "author": "anjianshi <anjianshi@gmail.com>",
     "user": "anjianshi",
     "dependencies": {
-        "eslint-config-anjianshi-babel": "^0.0.1",
+        "eslint-config-anjianshi-babel": "^0.0.2",
         "eslint-plugin-jsx-control-statements": "^2.1.1",
         "eslint-plugin-react": "^6.4.1"
     },

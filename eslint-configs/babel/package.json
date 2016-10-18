@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-anjianshi-babel",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": ["eslint", "eslintconfig"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslint-config/babel",
     "license": "MIT",
@@ -8,7 +8,7 @@
     "user": "anjianshi",
     "dependencies": {
         "babel-eslint": "^7.0.0",
-        "eslint-config-anjianshi-base": "^0.0.1"
+        "eslint-config-anjianshi-base": "^0.0.2"
     },
     "peerDependencies": {
         "eslint": ">= 3"

@@ -1,13 +1,13 @@
 {
     "name": "eslint-config-anjianshi-react-native",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": ["eslint", "eslintconfig"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslint-config/react-native",
     "license": "MIT",
     "author": "anjianshi <anjianshi@gmail.com>",
     "user": "anjianshi",
     "dependencies": {
-        "eslint-config-anjianshi-react": "^0.0.1",
+        "eslint-config-anjianshi-react": "^0.0.2",
         "eslint-plugin-react-native": "^2.0.0"
     },
     "peerDependencies": {
