@@ -225,7 +225,7 @@ module.exports = {
         // ECMAScript 6
         'arrow-body-style': 0,
         'arrow-parens': 0,
-        'arrow-spacing': [1, {\before: true, after: true}],
+        'arrow-spacing': [1, {before: true, after: true}],
         'constructor-super': 2,
         'generator-star-spacing': 0,
         'no-class-assign': 2,
