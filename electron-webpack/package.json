@@ -30,6 +30,7 @@
     "babel-loader": "^6.2.5",
     "babel-preset-anjianshi-react": "^0.0.2",
     "css-loader": "^0.25.0",
+    "devtron": "^1.4.0",
     "electron-packager": "^8.1.0",
     "electron-prebuilt": "^1.4.3",
     "eslint": "^3.8.0",
