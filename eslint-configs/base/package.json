@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-anjianshi-base",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": ["eslint", "eslintconfig"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslint-config/base",
     "license": "MIT",
