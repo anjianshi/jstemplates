@@ -7,7 +7,7 @@ app.on('ready', () => {
 
     // {{TMP:HMR_protocol}} 可以设成 http 或 https。
     // 详见 /build/renderer_hmr.js
-    const indexURL = process.env.HMR === '1' ? `{{TMP:HMR_protocol}}://{TMP:HMR_domain}:{TMP:HMR_port}/` : `file://${__dirname}/../renderer/index.html`
+    const indexURL = process.env.HMR === '1' ? `{TMP:HMR_protocol}://{TMP:HMR_domain}:{TMP:HMR_port}/` : `file://${__dirname}/../renderer/index.html`
     win.loadURL(indexURL)
 })
 
