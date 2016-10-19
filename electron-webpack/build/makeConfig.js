@@ -6,7 +6,6 @@ const env = require('./env')
 
 exports.makeWebpackConfig = function makeWebpackConfig(overrideConfigs={}, supportHMR=false) {
     const config = {
-        debug: env.dev,
         // 因为 webpack 无论在开发还是生产环境下，都会把多个文件合并成一个，因此在两种情况下都需要 source-map 以帮助进行调试
         // 对 source-map 格式的选择来自这里： http://cheng.logdown.com/posts/2016/03/25/679045
         devtool: 'cheap-module-source-map',
@@ -46,7 +45,7 @@ function makeBabelConfig() {
         // 开启 cache 可以加快二次编译时的编译速度，但也有可能因使用了过时的缓存导致页面出现 bug。
         // 因此生产环境中应把此功能关闭。
         cacheDirectory: env.dev,
-        presets: ['anjianshi-react']
+        presets: [['anjianshi-react', { modules: false }]]
     }
     const loaderUri = 'babel?' + JSON.stringify(compileConfig)
     const loader = { test: /\.js$/, exclude: /node_modules/, loader: loaderUri }

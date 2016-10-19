@@ -17,15 +17,13 @@ module.exports = makeWebpackConfig({
     resolve: {
         // 让处在很多级文件夹下的应用代码能更方便地引入顶层的代码
         // 例如不用 require('../../../helper)，直接 require("helper") 即可
-        // https://github.com/webpack/webpack/issues/472
-        root: env.src + '/main'
+        modules: [env.src + '/main', 'node_modules']
     },
     plugins: [
         // Add source map support for stack traces in node
         // https://github.com/evanw/node-source-map-support
         new webpack.BannerPlugin(
-          'require("source-map-support").install();',
-          { raw: true, entryOnly: false }
+          { raw: true, entryOnly: false, banner: 'require("source-map-support").install();' }
         ),
 
         new DistPackageJsonPlugin(),

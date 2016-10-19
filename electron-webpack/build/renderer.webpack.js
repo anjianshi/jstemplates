@@ -32,8 +32,7 @@ module.exports = makeWebpackConfig({
     resolve: {
         // 让处在很多级文件夹下的应用代码能更方便地引入顶层的代码
         // 例如不用 require('../../../helper)，直接 require("helper") 即可
-        // https://github.com/webpack/webpack/issues/472
-        root: env.src + '/renderer',
+        modules: [env.src + '/renderer', 'node_modules'],
     },
     plugins: [htmlPlugin],
 
