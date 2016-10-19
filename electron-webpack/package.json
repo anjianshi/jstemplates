@@ -10,7 +10,6 @@
     "compile-and-start": "npm run compile && npm run start",
     "package": "PLATFORM=linux npm run raw-package",
     "package-win": "PLATFORM=win32 npm run raw-package",
-    "package-and-start": "npm run package && ./var/app_dist/{TMP:your-app-name}",
     "clear": "rimraf var/app_dist",
     "compile-main": "webpack --config build/main.webpack.js",
     "compile-renderer": "webpack --config build/renderer.webpack.js",
