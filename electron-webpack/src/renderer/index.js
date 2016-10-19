@@ -1,13 +1,13 @@
-import "./debug-renderer"
+import './debug-renderer'
 
 
 import React from 'react'
-import { render } from "react-dom"
+import { render } from 'react-dom'
 import { App } from './App'
 
 render(
     <App />,
-    document.getElementById("root")
+    document.getElementById('root')
 )
 
 if(module.hot) {
@@ -16,7 +16,7 @@ if(module.hot) {
 
         render(
             <App />,
-            document.getElementById("root")
+            document.getElementById('root')
         )
     })
 }
