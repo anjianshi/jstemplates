@@ -4,19 +4,19 @@
   "version": "0.0.1",
   "main": "main/index.js",
   "scripts": {
-    "compile": "npm run clear && npm run compile-main && npm run compile-renderer && npm run dist-install-deps",
-    "compile-hmr": "npm run clear && npm run compile-main-hmr && npm run dist-install-deps && npm run compile-renderer-hmr",
+    "compile": "yarn run clear && yarn run compile-main && yarn run compile-renderer && yarn run dist-install-deps",
+    "compile-hmr": "yarn run clear && yarn run compile-main-hmr && yarn run dist-install-deps && yarn run compile-renderer-hmr",
     "start": "electron var/app_dist/main/index.js",
-    "compile-and-start": "npm run compile && npm run start",
-    "package": "PLATFORM=linux npm run raw-package",
-    "package-win": "PLATFORM=win32 npm run raw-package",
+    "compile-and-start": "yarn run compile && yarn run start",
+    "package": "PLATFORM=linux yarn run raw-package",
+    "package-win": "PLATFORM=win32 yarn run raw-package",
     "clear": "rimraf var/app_dist",
     "compile-main": "webpack --config build/main.webpack.js",
     "compile-renderer": "webpack --config build/renderer.webpack.js",
-    "compile-main-hmr": "NODE_ENV=development HMR=1 npm run compile-main",
+    "compile-main-hmr": "NODE_ENV=development HMR=1 yarn run compile-main",
     "compile-renderer-hmr": "NODE_ENV=development HMR=1 node build/renderer_hmr.js",
     "dist-install-deps": "cd var/app_dist && yarn install",
-    "raw-package": "NODE_ENV=production npm run compile && NODE_ENV=production electron-packager var/app_dist --platform=$PLATFORM --arch=x64 --overwrite --out var"
+    "raw-package": "NODE_ENV=production yarn run compile && NODE_ENV=production electron-packager var/app_dist --platform=$PLATFORM --arch=x64 --overwrite --out var"
   },
   "dependencies": {
     "babel-polyfill": "^6.16.0",
