@@ -22,7 +22,7 @@ module.exports = {
         'no-empty': 1,
         'no-ex-assign': 2,
         'no-extra-boolean-cast': 1,
-        'no-extra-parens': [1, 'all', {nestedBinaryExpressions: false}],
+        'no-extra-parens': 0,
         'no-extra-semi': 2,
         'no-func-assign': 2,
         'no-inner-declarations': [2, 'functions'],
@@ -117,9 +117,9 @@ module.exports = {
         'no-shadow': 0,
         'no-undef-init': 2,
         'no-undef': 1,
-        'no-undefined': 2,
+        'no-undefined': 0,
         'no-unused-vars': 1,
-        'no-use-before-define': [1, {functions: true, classes: true}],
+        'no-use-before-define': 0,
 
         // Node.js and CommonJS
         'callback-return': 0,
