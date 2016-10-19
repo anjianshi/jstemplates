@@ -1,6 +1,6 @@
 {
     "name": "babel-preset-anjianshi-react-ie",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "keywords": ["babel", "preset"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/babel-presets/react",
     "license": "MIT",
