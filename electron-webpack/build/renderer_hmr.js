@@ -24,7 +24,7 @@ function withQuery(req, path) {
 app.use((req, res, next) => {
     const patterns = [
         /__webpack_hmr/,
-        /\.(js|map|css|html)$/,
+        /\.(js|map|json|css|html)$/,
         /\.(jpg|png|gif|svg)$/,
     ]
     for(const pattern of patterns) {
