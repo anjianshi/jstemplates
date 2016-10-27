@@ -12,7 +12,7 @@ module.exports = {
         // Possible Errors
         'no-cond-assign': [2, 'except-parens'],
         'no-console': 0,
-        'no-constant-condition': 2,
+        'no-constant-condition': [2, {checkLoops: false}],
         'no-control-regex': 0,
         'no-debugger': 0,
         'no-dupe-args': 2,
