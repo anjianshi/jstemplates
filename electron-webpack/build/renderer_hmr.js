@@ -82,6 +82,6 @@ server.listen(port, host, function(err) {
         console.log(err);
     } else {
         console.log(`Listening at ${protocol}://${host}:${port}`)
-        console.log(`manual run 'npm start' to start Electron app`)
+        console.log(`manual run 'yarn start' to start Electron app`)
     }
 });
