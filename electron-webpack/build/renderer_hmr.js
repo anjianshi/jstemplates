@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express')
-const querystring = require('querystring')
 const fs = require('fs')
 const webpack = require('webpack')
 const config = require('./renderer.webpack.js')
@@ -9,34 +8,6 @@ const env = require('./env')
 
 
 const app = express()
-
-function withQuery(req, path) {
-    let query = querystring.stringify(req.query)
-    if(query) { query = '?' + query }
-    return path + query
-}
-
-/*
-适配 react-router，碰到不符合匹配规则的请求，一律返回首页。
-以便能正确处理 react-router 通过 pushState 功能构建出来的原本不存在的 URL。
-例如： localhost:9000/index.js 就是正常 URL； localhost:9000/goods/picture/5 像这个就应该转换成返回首页
-*/
-app.use((req, res, next) => {
-    const patterns = [
-        /__webpack_hmr/,
-        /\.(js|map|json|css|html)$/,
-        /\.(jpg|png|gif|svg)$/,
-    ]
-    for(const pattern of patterns) {
-        if(req.path.match(pattern)) {
-            next()
-            return
-        }
-    }
-
-    req.url = withQuery(req, '/')
-    next()
-})
 
 
 // ======= 配置 dev 和 hot middleware ===========
