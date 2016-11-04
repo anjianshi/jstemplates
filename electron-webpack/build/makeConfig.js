@@ -8,7 +8,8 @@ exports.makeWebpackConfig = function makeWebpackConfig(overrideConfigs={}, suppo
     const config = {
         // 因为 webpack 无论在开发还是生产环境下，都会把多个文件合并成一个，因此在两种情况下都需要 source-map 以帮助进行调试
         // 对 source-map 格式的选择来自这里： http://cheng.logdown.com/posts/2016/03/25/679045
-        devtool: 'cheap-module-source-map',
+        // 经测试，在 HMR 环境下 `cheap-module-source-map` 无法正常运行，所以这里不加 '-module'
+        devtool: 'cheap-source-map',
         plugins: [
             // 设置 main 和 renderer process　能读取到的 process.env　内容
             new webpack.DefinePlugin({
