@@ -2,14 +2,20 @@
 'use strict';
 
 module.exports = {
-    'env': {
-        'es6': true
+    'parserOptions': {
+        'ecmaVersion': '2017',
+        'sourceType': 'module',
+        'ecmaFeatures': {
+            'jsx': true,
+            'experimentalObjectRestSpread': true
+        }
     },
 
     // 会导致程序不能正常运行的或明确禁止使用的句法设为 2-error；
     // 不会影响程序运行，但是不好的习惯的，设为 1-warning
     'rules': {
         // Possible Errors
+        'no-await-in-loop': 0,
         'no-cond-assign': [2, 'except-parens'],
         'no-console': 0,
         'no-constant-condition': [2, {checkLoops: false}],
@@ -87,6 +93,7 @@ module.exports = {
         'no-redeclare': [2, {builtinGlobals: true}],
         'no-restricted-properties': 0,
         'no-return-assign': [2, 'except-parens'],
+        'no-return-await': 1,
         'no-script-url': 2,
         'no-self-compare': 2,
         'no-sequences': 2,
@@ -96,10 +103,13 @@ module.exports = {
         'no-useless-call': 1,
         'no-useless-concat': 1,
         'no-useless-escape': 1,
+        'no-useless-return': 1,
         'no-void': 1,
         'no-warning-comments': 0,
         'no-with': 2,
+        'prefer-promise-reject-errors': 2,
         'radix': [1, 'as-needed'],
+        'require-await': 1,
         'vars-on-top': 0,
         'wrap-iife': [2, 'inside'],
         'yoda': 0,
@@ -138,6 +148,7 @@ module.exports = {
         'block-spacing': 0,
         'brace-style': [1, '1tbs', {allowSingleLine: true}],
         'camelcase': 0,
+        'capitalized-comments': 0,
         'comma-dangle': 0,
         'comma-spacing': [1, {before: false, after: true}],
         'comma-style': [1, 'last'],
@@ -185,6 +196,7 @@ module.exports = {
         'no-lonely-if': 0,
         'no-mixed-operators': 0,
         'no-mixed-spaces-and-tabs': 2,
+        'no-multi-assign': 0,
         'no-multiple-empty-lines': 0,
         'no-negated-condition': 0,
         'no-nested-ternary': 0,
@@ -243,7 +255,8 @@ module.exports = {
         'object-shorthand': 0,
         'prefer-arrow-callback': 0,
         'prefer-const': 1,
-        'prefer-numeric-literals': 0,
+        'prefer-destructuring': 0,
+        'prefer-numeric-literals': 1,
         'prefer-reflect': 0,
         'prefer-rest-params': 0,
         'prefer-spread': 0,

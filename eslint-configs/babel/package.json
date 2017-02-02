@@ -1,13 +1,13 @@
 {
     "name": "eslint-config-anjianshi-babel",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "keywords": ["eslint", "eslintconfig"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslint-config/babel",
     "license": "MIT",
     "author": "anjianshi <anjianshi@gmail.com>",
     "user": "anjianshi",
     "dependencies": {
-        "babel-eslint": "^7.0.0",
+        "babel-eslint": "^7.1.1",
         "eslint-config-anjianshi-base": "^0.0.5"
     },
     "peerDependencies": {
