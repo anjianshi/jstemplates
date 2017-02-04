@@ -231,6 +231,7 @@ module.exports = {
         'space-unary-ops': [1, { words: true, nonwords: false }],
         'spaced-comment': 0,
         'unicode-bom': 0,
+        'template-tag-spacing': 2,
         'wrap-regex': 0,
 
 
