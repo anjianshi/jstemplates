@@ -2,15 +2,6 @@
 'use strict';
 
 module.exports = {
-    'parserOptions': {
-        'ecmaVersion': '2017',
-        'sourceType': 'module',
-        'ecmaFeatures': {
-            'jsx': true,
-            'experimentalObjectRestSpread': true
-        }
-    },
-
     // 会导致程序不能正常运行的或明确禁止使用的句法设为 2-error；
     // 不会影响程序运行，但是不好的习惯的，设为 1-warning
     'rules': {
