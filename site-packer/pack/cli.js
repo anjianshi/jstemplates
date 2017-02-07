@@ -64,7 +64,6 @@ if(env.clearOutputPath) {
     console.log('clearing outputPath')
 
     const files = glob.sync('**/!(webpack_records_path.json)', { cwd: env.outputPath })
-    console.log(files)
     for(const file of files) {
         fs.unlinkSync(path.join(env.outputPath, file))
     }
