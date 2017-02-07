@@ -261,7 +261,7 @@ function stylePart(env) {
 
     不过 ExtractTextPlugin 在 HMR 模式下无法使用。
     */
-    const plugins = env.inHmr ? [] : [new ExtractTextPlugin('app-[contenthash].css')]
+    const plugins = env.inHmr ? [] : [new ExtractTextPlugin('app-[contenthash:20].css')]
 
     const styleLoader = { loader: 'style-loader' }
     const cssLoader = {
@@ -291,7 +291,10 @@ function stylePart(env) {
     const imgRule = {
         test: /\.(gif|png|jpg)$/,
         loader: 'url-loader',
-        options: { limit: 10000 }   // 10kb 以上的图片会改用 file-loader 加载
+        options: {
+            limit: 100,                       // 10kb 以上的图片会改用 file-loader 加载
+            name: '[name]-[hash:20].[ext]'    // 使用 file-loader 时，用此格式为文件命名
+        }
     }
 
     return {
