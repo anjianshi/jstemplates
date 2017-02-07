@@ -10,6 +10,7 @@ https://github.com/webpack/webpack-dev-server/commit/7eb7a921d6d95328c30783ed0a1
 const fs = require('fs')
 const path = require('path')
 const spawnSync = require('child_process').spawnSync
+const glob = require('glob')
 const upload = require('../upload/upload')
 
 
@@ -57,11 +58,22 @@ function exec(binName, extraArgs) {
     })
 }
 
+const env = require('./env').generateEnv(command, configPath)
+
+if(env.clearOutputPath) {
+    console.log('clearing outputPath')
+
+    const files = glob.sync('**/!(webpack_records_path.json)', { cwd: env.outputPath })
+    console.log(files)
+    for(const file of files) {
+        fs.unlinkSync(path.join(env.outputPath, file))
+    }
+}
+
 if(command === 'compile' || command === 'compile-upload') {
     exec('webpack')
 
     if(command === 'compile-upload') {
-        const env = require('./env').generateEnv(command, configPath)
         upload({
             bucket: env.cdn.bucket,
             accessKey: env.cdn.accessKey,

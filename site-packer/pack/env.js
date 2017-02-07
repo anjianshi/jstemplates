@@ -17,6 +17,8 @@ exports.generateEnv = function generateEnv(command, packConfigPath) {
 
 // 注意：设计了新的配置项时，一定要把它的定义补充进来，不然用户为那个配置项赋的值会被抛弃。
 const packConfigTemplate = {
+    clearOutputPath: false,
+
     entry: null,
     vendors: null,
     outputPath: null,
