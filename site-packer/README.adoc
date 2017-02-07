@@ -1,0 +1,101 @@
+提供与 Web 站点打包相关的工具，并预置了一些常用的打包配置
+
+
+= 环境要求
+
+* 要运行此工具必须使用最新版本的 Node.js
+* 用此工具生成的配置打包出来的站点，不支持 IE11 及以下浏览器
+
+
+= 工具列表
+
+== anjianshi-pack
+基于 webpack，对使用了 React 的站点进行打包。支持 HMR。
+
+=== 使用方式
+`NODE_ENV=development|production anjianshi-pack command config-file`
+
+例如：`NODE_ENV=development anjianshi-pack compile ./build/packConfig.js`
+
+NODE_ENV::
+通过它来指定是在开发还是生产状态下执行命令。这两种状态下的打包配置有所不同。例如生产状态下会进行代码压缩。 +
+若省略，默认为 `production`。
+
+command:: 指定要执行的命令
+
+config-file:: 在此文件里指定此工具要用到的配置信息
+
+==== command 列表
+
+compile:: 执行普通的 webpack 打包操作
+watch:: 进入 `webpack --watch` 模式
+hmr:: 进入 `hmr` 模式
+compile-upload:: 先执行 `compile` 操作，然后用 `anjianshi-upload` 工具（后面会讲到）上传打包结果。
+
+`watch` 和 `hmr` 命令通常只在开发（`NODE_ENV=development`）状态下使用， +
+但有时，也可能会在生产环境下使用，例如用来调试在开发环境下没有出现，但在生产环境下却出现了的问题。
+
+`compile-upload` 通常只在生产状态下使用。
+
+=== config 格式
+config-file 需要是一个 JavaScript 脚本，里面可以有任意 JavaScript 代码， +
+并最终以 `module.exports = config` 或 `module.exports = (env) => config` 的方式导出配置数据。
+
+其配置内容如下，除明确表示可以不填的，其他部分都是必填项。
+```
+modules.exports = {
+    entry: '',               // entry script 的路径
+    vendors: null,           // 将指定名称的类库单独拆分成一个 chunk，可以不指定。
+    outputPath: '',          // 编译结果输出到哪个目录下，脚本、资源文件和 index.html 都会被输出到这里。必须是绝对路径。
+    publicPath: '',          // 指定通过 web 访问资源文件时的 base url。一般在结尾要包含 "/"。
+                             // 详见： https://webpack.js.org/configuration/output/#output-publicpath
+                             // -----
+                             // 虽然 webpack 允许把 publicPath 设置成带协议、域名的完整 URL 前缀，但用于此工具时不应这样做，
+                             // 因为在 HMR 环境下，此工具会自动为它填充协议、域名等信息
+                             // -----
+                             // 在开启 CDN 的状态下，此参数并不会被使用，转而使用 CDN url
+
+    html: {
+        template: null,      // 使用者自定义的 index.html 模板的路径。可以不填，此时会使用此工具提供的默认模板。
+        title: null,         // 网页的默认 title，会被默认模板使用（自定义模板如有需要也可以使用它）。
+        faviconPath: null,   // 指定一个要作为 favicon 的图片，格式为 PNG。可以不填。
+        baiduTongjiCode: null,  // 百度统计的识别号。若填写，则会引入百度统计的代码。可不填。
+    },
+
+    hmr: {
+        domain: null,        // dev client 通过哪个域名连接上 devServer。如果只在单机内调试，不用指定；
+                             // 若要在其他机器上访问此机器上的站点，则需要指定，可以是 IP 地址或域名。
+        port: 9000,          // devServer 监听的端口，不指定则使用默认端口
+        sslCert: null,       // 若指定，则可以让 devServer 响应 https 请求。可以不指定。
+        sslKey: null,        // 须和 sslCert 同时指定。
+        proxy: null,         // 指定要让 devServer 代理的内容。
+                             // 格式参见 https://webpack.js.org/configuration/dev-server/#devserver-contentbase
+                             // 以及 https://github.com/chimurai/http-proxy-middleware#options
+    },
+
+    webpackConfig: {},       // 额外附加的 webpack config。它会被递归合并到工具自己生成的 webpack config 中
+
+    // anjianshi-upload 要用到的参数，只在执行 compile-upload 时需要提供
+    cdn: {
+        bucket: '',
+        accessKey: '',
+        secretKey: '',
+        prefix: '',          // 可不填
+        visitBaseUrl: ''     // 访问此 bucket 里的内容应使用的 url。需包括 http / https 部分，不包括上一个参数指定的 prefix 部分。
+    }
+}
+```
+
+
+== anjianshi-upload
+用于把打包好的文件上传到云存储上。目前只支持七牛云存储。
+
+=== 使用方式
+`anjianshi-upload '{"bucket": "", ...}'`
+
+参数以 json 形式传入。具体的 key 如下：
+bucket:: 要上传到七牛的哪个 bucket 上
+accessKey:: 上传用到的 access key
+secretKey:: 上传用到的 secret key
+prefix:: 上传到 bucket 里的哪个路径下。可不填，默认为 "/"。
+path:: 指定要把哪个文件 / 文件夹上传上去
