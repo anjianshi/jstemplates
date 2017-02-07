@@ -289,7 +289,7 @@ function stylePart(env) {
     }
 
     const imgRule = {
-        test: /\.(gif|png|jpg)$/,
+        test: /\.(gif|png|jpg|svg)$/,
         loader: 'url-loader',
         options: {
             limit: 10000,                     // 10kb 以上的图片会改用 file-loader 加载
@@ -297,23 +297,8 @@ function stylePart(env) {
         }
     }
 
-    const svgRule = {
-        test: /\.svg$/,
-        loader: 'file-loader',
-        options: {
-            name: '[name]-[hash:20].[ext]'
-        }
-    }
-
-    // 在 webpack 中并不会自动对 svg 图像进行自动处理。因为在 <img /> 中，它要用 url-loader 载入；而在 css 中，要用 svg-url-loader 载入；
-    // （当然，对这两种情况都可以用 file-loader 来载入。
-    //   不过 file-loader 是把目标图片实际部署到文件夹中，然后通过一次网络请求来显示图片的，因此只适用于图片比较大的情况）
-    // 在 <img /> 中载入的方式是： <img src={require('url!' + path)} />
-    // 在 css 中进行载入的方法是： url("~!svg-url!xxxxx") 此方法来自：https://github.com/webpack/css-loader/issues/1#issuecomment-15846576
-
-
     return {
-        module: { rules: [styleRule, imgRule, svgRule] },
+        module: { rules: [styleRule, imgRule] },
         plugins: plugins
     }
 }
