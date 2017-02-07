@@ -292,7 +292,7 @@ function stylePart(env) {
         test: /\.(gif|png|jpg)$/,
         loader: 'url-loader',
         options: {
-            limit: 100,                       // 10kb 以上的图片会改用 file-loader 加载
+            limit: 100000,                    // 10kb 以上的图片会改用 file-loader 加载
             name: '[name]-[hash:20].[ext]'    // 使用 file-loader 时，用此格式为文件命名
         }
     }
