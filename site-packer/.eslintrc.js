@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ['anjianshi-base'],
+    extends: ['anjianshi'],
     env: {
         node: true,
         es6: true
