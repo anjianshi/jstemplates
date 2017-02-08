@@ -42,7 +42,7 @@ module.exports = {
         'react/sort-comp': 0,
         'react/sort-prop-types': 0,
         'react/style-prop-object': 2,
-        'react/void-dom-elements-no-children': 2,
+        // 'react/void-dom-elements-no-children': 2,    // 此规则貌似还没发布
 
         'react/jsx-boolean-value': 1,
         'react/jsx-closing-bracket-location': 0,
