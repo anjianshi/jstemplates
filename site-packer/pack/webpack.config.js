@@ -103,7 +103,22 @@ function basePart(env) {
 
     if(!env.dev) {
         config.plugins.push(
-            new webpack.optimize.UglifyJsPlugin({ sourceMap: true })
+            // UglifyJS API 文档： http://lisperator.net/uglifyjs/
+            // 以下配置里，通过 `compress: {}` 可以向 UglifyJS compressor 指定参数；
+            // 通过 `output: {}`，可以向 UglifyJS code generator 指定参数
+            // 详见 https://github.com/webpack/webpack/blob/master/lib/optimize/UglifyJsPlugin.js
+            new webpack.optimize.UglifyJsPlugin({
+                sourceMap: true,
+
+                compress: {
+                    // 要求 UglifyJS 不将 o['abc'] 转换成 o.abc
+                    // 不然对于 ES6 module 相关的代码： module['default'] 会被转换成 module.default，导致在 IE8 及以下浏览器里报错
+                    // 这个报错连在 manifest chunk 里都会出现，使得整个 app 里所有脚本，包括用来引导用户更新浏览器的脚本都没办法运行。
+                    properties: false,
+                    // 让 UglifyJS 不要输出许多我们用不到的提示信息
+                    warnings: false
+                }
+            })
         )
     }
 
