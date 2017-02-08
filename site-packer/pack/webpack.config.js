@@ -312,6 +312,7 @@ function indexHTMLPart(env) {
         title: env.html.title,
         inject: false,
 
+        bodyContent: env.html.bodyContent,
         baiduTongjiCode: env.html.baiduTongjiCode,
         faviconUrl: env.html.faviconPath ? urlJoin(getPublicPath(env), 'favicon.png') : null
     }))

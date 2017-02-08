@@ -27,6 +27,7 @@ const packConfigTemplate = {
     html: {
         template: null,
         title: null,
+        bodyContent: '<div id="root"></div>',
         faviconPath: null,
         baiduTongjiCode: null,
     },

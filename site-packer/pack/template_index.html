@@ -17,7 +17,7 @@
 <% for(var i in files.css){ %><link rel="stylesheet" href="<%- files.css[i] %>" /><% } %>
 
 <body>
-    <div id="root"></div>
+<%= opt.bodyContent %>
 </body>
 
 <% for(var i in files.js) { %><script src="<%- files.js[i] %>"></script><% } %>

@@ -60,6 +60,7 @@ modules.exports = {
     html: {
         template: null,      // 使用者自定义的 index.html 模板的路径。可以不填，此时会使用此工具提供的默认模板。
         title: null,         // 网页的默认 title，会被默认模板使用（自定义模板如有需要也可以使用它）。
+        bodyContent: null,   // 要在 <body> 标签内填入的内容，可不填。
         faviconPath: null,   // 指定一个要作为 favicon 的图片，格式为 PNG。可以不填。
         baiduTongjiCode: null,  // 百度统计的识别号。若填写，则会引入百度统计的代码。可不填。
     },
