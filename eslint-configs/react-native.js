@@ -1,9 +1,10 @@
 /*eslint-env node*/
-"use strict";
+'use strict'
 
-module.exports = {
-    "extends": ['anjianshi-react'],
+var merge = require('./utils').merge
+var react = require('./react')
 
+module.exports = merge(react, {
     "plugins": ["react-native"],
 
     "rules": {
@@ -27,4 +28,4 @@ module.exports = {
         window: true,
         navigator: true,
     }
-};
+})

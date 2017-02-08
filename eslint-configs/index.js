@@ -1,5 +1,5 @@
 /*eslint-env node*/
-'use strict';
+'use strict'
 
 module.exports = {
     // 会导致程序不能正常运行的或明确禁止使用的句法设为 2-error；
@@ -260,4 +260,4 @@ module.exports = {
         'template-curly-spacing': 0,
         'yield-star-spacing': 0,
     }
-};
+}

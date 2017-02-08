@@ -1,9 +1,10 @@
 /*eslint-env node*/
-'use strict';
+'use strict'
 
-module.exports = {
-    extends: 'anjianshi-babel',
+var merge = require('./utils').merge
+var babel = require('./babel')
 
+module.exports = merge(babel, {
     plugins: ['react', 'jsx-control-statements'],
 
     env: {
@@ -91,4 +92,4 @@ module.exports = {
         When: true,
         Otherwise: true,
     }
-};
+})

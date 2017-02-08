@@ -1,9 +1,10 @@
 /*eslint-env node*/
-'use strict';
+'use strict'
 
-module.exports = {
-    extends: 'anjianshi-base',
+var merge = require('./utils').merge
+var base = require('./index')
 
+module.exports = merge(base, {
     parser: 'babel-eslint',
 
     env: {
@@ -13,4 +14,4 @@ module.exports = {
     rules: {
         'strict': 0,            // babel 会自动给代码加上 use strict;
     }
-};
+})
