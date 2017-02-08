@@ -33,7 +33,7 @@ module.exports = {
         'react/no-unused-prop-types': 0,
         'react/prefer-es6-class': 0,        // 有时要用 React.createClass() 代替 stateless function component 以支持 hmr
         'react/prefer-stateless-function': 0,
-        'react/prop-types': 1,
+        'react/prop-types': 0,              // 对于使用了 redux 以及 redux-react 里的 connect() 的情况，这条规则不适用
         'react/react-in-jsx-scope': 2,
         'react/require-default-props': 1,
         'react/require-optimization': 0,

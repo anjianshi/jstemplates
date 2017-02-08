@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-anjianshi-react",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "keywords": ["eslint", "eslintconfig"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslint-config/react",
     "license": "MIT",
