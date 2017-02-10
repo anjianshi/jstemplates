@@ -12,6 +12,9 @@ module.exports = merge(babel, {
     },
 
     rules: {
+        // 用 `method = () => {}` 为 ES6 class 的 method 绑定 this 时，会误触这条 rule，因此将它关闭
+        'no-invalid-this': 0,
+
         'react/display-name': 0,
         'react/forbid-component-props': 0,
         'react/forbid-prop-types': 0,
