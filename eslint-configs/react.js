@@ -55,7 +55,7 @@ module.exports = merge(babel, {
         'react/jsx-filename-extension': 0,
         'react/jsx-first-prop-new-line': 0,
         'react/jsx-handler-names': 0,
-        'react/jsx-indent': [1, 4],
+        'react/jsx-indent': 0,          // 此配置无法正确处理 jsx-control-statements 因此关闭它
         'react/jsx-indent-props': 0,    // 有时需要是 4，如果有 childern 则需要是 8，所以不限制
         'react/jsx-key': 1,
         'react/jsx-max-props-per-line': 0,
