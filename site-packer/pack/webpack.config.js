@@ -98,6 +98,11 @@ function basePart(env) {
                 key: fs.readFileSync(env.hmr.sslKey),
             } : false,
             proxy: env.hmr.proxy || {},
+            historyApiFallback: {
+                rewrites: [
+                    { from: /./, to: urlJoin(getPublicPath(env), 'index.html') }
+                ]
+            },
         }
     }
 
