@@ -315,6 +315,10 @@ function stylePart(env) {
             limit: 10000,                     // 10kb 以上的图片会改用 file-loader 加载
             name: '[name]-[hash:20].[ext]'    // 使用 file-loader 时，用此格式为文件命名
         }
+        // 有时，若想明确用 file-loader 载入文件（例如一个图片被重复使用了很多次，如果用 url-loader 的话，每次都要重复引入 datauri，导致文件体积增加许多）
+        // 可以这样： require('!file-loader!img-path')
+        // 开头的 '!' 表示忽略 config file 里指定的 rule，只使用 require() 里指定的 rule，
+        // 不然在处理 svg 等类型是会出现问题：svg 内容会先被转换成 datauri，然后才导出成文件，最终导致文件格式不合法
     }
 
     return {
