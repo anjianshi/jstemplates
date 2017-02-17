@@ -1,3 +1,5 @@
+'use strict'
+
 const path = require('path')
 const urlJoin = require('url-join')     // path.join() 不能用于 url，它会把 http:// 转换成 http:/，因此需要此工具
 const _ = require('lodash')
@@ -74,11 +76,15 @@ function getPublicPath(env) {
 function basePart(env) {
     const config = {
         // 可选的 devtool 类型见： https://webpack.js.org/configuration/devtool/
-        // 经测试，cheap-module-source-map、cheap-source-map 无法生成准确的 JavaScript source map，
-        // 在代码里进行 console.log() 然后在 chrome dev tools 里跳转到对应的代码，看到的是 babel 编译后的代码，而不是原始代码。
-        // 只有 source-map 没有问题。
-        // 目前原因不明。
-        devtool: 'source-map',
+        // 经测试，只有 source-map 类型生成的 JavaScript source map 是准确的，
+        // 即：在代码里进行 console.log() 然后在 chrome dev tools 里跳转到对应的代码，看到的是 babel 编译后的代码，而不是原始代码。
+        // 像 eval、cheap-module-source-map、cheap-source-map 等都无法生成准确的结果，原因不明。
+        // -----
+        // 但是在 HMR 环境下，因为 react-hot-loader 引入了 redbox-react，若这里设置成 source-map，在 redbox 错误堆栈里将看不到正确的文件名。
+        // 需要调整成 eval，并配合设置 devtoolModuleFilenameTemplate，详见： https://github.com/commissure/redbox-react#sourcemaps-with-webpack
+        devtool: env.inHmr ? 'eval' : 'source-map',
+
+        output: env.inHmr ? { devtoolModuleFilenameTemplate: '/[absolute-resource-path]' } : {},
 
         plugins: [
             // 设置 App 代码及其引用的类库里能读取到的 process.env 内容
