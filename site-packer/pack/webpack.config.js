@@ -302,14 +302,19 @@ function stylePart(env) {
             sourceMap: true,
         }
     }
+    // 在 app 目录下，通过 postcss.config.js 配置 postcss
+    // 详见 https://github.com/postcss/postcss-loader#usage
+    const postcssLoader = {
+        loader: 'postcss-loader',
+    }
     const stylusLoader = { loader: 'stylus-loader' }
 
     const styleRule = {
         test: /\.styl$/,
         use: env.inHmr
-            ? [styleLoader, cssLoader, stylusLoader]
+            ? [styleLoader, cssLoader, postcssLoader, stylusLoader]
             : ExtractTextPlugin.extract({
-                use: [cssLoader, stylusLoader],
+                use: [cssLoader, postcssLoader, stylusLoader],
                 fallback: styleLoader,
             })
     }
