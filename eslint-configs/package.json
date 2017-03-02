@@ -1,7 +1,10 @@
 {
     "name": "eslint-config-anjianshi",
-    "version": "0.0.1",
-    "keywords": ["eslint", "eslintconfig"],
+    "version": "0.0.2",
+    "keywords": [
+        "eslint",
+        "eslintconfig"
+    ],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/eslint-config",
     "repository": {
         "type": "git",
@@ -11,9 +14,16 @@
     "author": "anjianshi <anjianshi@gmail.com>",
     "user": "anjianshi",
     "main": "index.js",
-    "files": ["index.js", "babel.js", "react.js", "react-native.js", "utils.js"],
+    "files": [
+        "index.js",
+        "babel.js",
+        "react.js",
+        "react-native.js",
+        "utils.js"
+    ],
     "dependencies": {
         "babel-eslint": "^7.1.1",
+        "eslint-plugin-babel": "^4.1.0",
         "eslint-plugin-jsx-control-statements": "^2.1.1",
         "eslint-plugin-react": "^6.9.0",
         "eslint-plugin-react-native": "^2.2.1"
