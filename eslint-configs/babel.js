@@ -9,7 +9,7 @@ module.exports = merge(base, {
 
     // 使用了 babel 后，eslint 的一些 rule 的行为需要修改，但光靠 babel-eslint parse 没法做到这些，
     // 因此还要通过 eslint-plugin-babel 提供一些经过修正的 rules
-    plugins: ['bable'],
+    plugins: ['babel'],
 
     env: {
         es6: true               // 此设定是有必要的，不然 eslint 会认为 Set / Map 等对象是不存在 / 不允许使用的
