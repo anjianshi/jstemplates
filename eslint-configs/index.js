@@ -66,7 +66,7 @@ module.exports = {
         'no-implicit-coercion': [1, {boolean: false}],
         'no-implicit-globals': 0,
         'no-implied-eval': 2,
-        'no-invalid-this': 1,
+        'no-invalid-this': 0,       // 此 rule 目前不能正常处理 class 里的 arrow function 形式的 method，因此禁用它。
         'no-iterator': 2,
         'no-labels': 2,
         'no-lone-blocks': 1,
