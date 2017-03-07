@@ -9,7 +9,7 @@ function preset(context, opts) {
         ],
         plugins: [
             require('babel-plugin-transform-decorators-legacy').default,
-            require('jsx-control-statements')
+            require('hg-jsx-control-statements')
         ]
     }
 }
