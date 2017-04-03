@@ -1,6 +1,6 @@
 {
     "name": "babel-preset-anjianshi-react-ie",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "keywords": ["babel", "preset"],
     "homepage": "https://github.com/anjianshi/jstemplates/tree/master/babel-presets/react",
     "license": "MIT",
@@ -8,6 +8,6 @@
     "user": "anjianshi",
     "dependencies": {
         "babel-plugin-transform-proto-to-assign": "^6.22.0",
-        "babel-preset-anjianshi-react": "^0.0.7"
+        "babel-preset-anjianshi-react": "^0.0.8"
     }
 }
