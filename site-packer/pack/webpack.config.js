@@ -33,6 +33,12 @@ function mergeConfig(config, updates) {
     })
 }
 
+// 返回经过过滤的数组 / 对象，排除值为 undefined 的项目
+function clean(val) {
+    const shouldKeep = v => v !== undefined
+    return Array.isArray(val) ? _.filter(val, shouldKeep) : _.pickBy(val, shouldKeep)
+}
+
 
 // ================================================
 
@@ -65,12 +71,17 @@ https://webpack.js.org/configuration/dev-server
 
 function getPublicPath(env) {
     const hmr = env.hmr
-    return env.inHmr
-        // 在 HMR 环境下解决 CSS 里 url() 解析不正确的问题。详见 stylePart 的注释
-        ? urlJoin(`${hmr.sslCert ? 'https' : 'http'}://${hmr.domain}:${hmr.port}`, env.publicPath)
-        : (env.useCdn
+    if(env.inHmr) {
+        if(!env.hmr.bare) {
+            return env.publicPath
+        } else {
+            return urlJoin(`${hmr.sslCert ? 'https' : 'http'}://${hmr.domain}:${hmr.port}`, env.publicPath)
+        }
+    } else {
+        return env.useCdn
             ? urlJoin(env.cdn.visitBaseUrl, env.cdn.prefix, '/')
-            : env.publicPath)
+            : env.publicPath
+    }
 }
 
 function basePart(env) {
@@ -95,7 +106,7 @@ function basePart(env) {
             }),
         ],
 
-        devServer: {
+        devServer: clean({
             hot: true,
             host: '0.0.0.0',
             port: env.hmr.port,
@@ -105,11 +116,12 @@ function basePart(env) {
             } : false,
             proxy: env.hmr.proxy || {},
             historyApiFallback: {
-                rewrites: [
-                    { from: /./, to: urlJoin(getPublicPath(env), 'index.html') }
-                ]
+                rewrites: clean([
+                    env.hmr.bare ? { from: /./, to: urlJoin(getPublicPath(env), 'index.html') } : undefined
+                ])
             },
-        }
+            publicPath: !env.hmr.bare ? '/' : undefined     // 在非 bare 情况下，以 "/" 为基础路径提供文件
+        })
     }
 
     if(!env.dev) {
@@ -349,10 +361,12 @@ function indexHTMLPart(env) {
 
         bodyContent: env.html.bodyContent,
         baiduTongjiCode: env.html.baiduTongjiCode,
-        faviconUrl: env.html.faviconPath ? urlJoin(getPublicPath(env), 'favicon.png') : null
+        faviconUrl:
+            env.html.faviconUrl ||
+            (env.html.faviconPath ? urlJoin(getPublicPath(env), 'favicon.png') : null)
     }))
 
-    if(env.html.faviconPath) {
+    if(!env.html.faviconUrl && env.html.faviconPath) {
         plugins.push(new CopyWebpackPlugin([
             { from: env.html.faviconPath, to: 'favicon.png' }
         ]))
