@@ -79,6 +79,8 @@ if(command === 'compile' || command === 'compile-upload') {
             secretKey: env.cdn.secretKey,
             prefix: env.cdn.prefix,
             path: env.outputPath,
+            ignorePatterns: env.cdn.ignorePatterns,
+            removeAfterUpload: env.cdn.removeAfterUpload,
         })
     }
 } else if(command === 'watch') {

@@ -70,12 +70,15 @@ const packConfigTemplate = {
 
     webpackConfig: null,    // 这里默认值不能设成 {}，不然后面 merge 时会导致忽略使用者指定的内容
 
+    // 见 upload/upload.js
     cdn: {
         bucket: null,
         accessKey: null,
         secretKey: null,
         prefix: '/',
         visitBaseUrl: null,
+        ignorePatterns: [],
+        removeAfterUpload: false,
     }
 }
 
