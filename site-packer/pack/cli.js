@@ -51,10 +51,9 @@ function exec(binName, extraArgs) {
 
     spawnSync(binPath, args, {
         stdio: 'inherit',
-        env: {
-            NODE_ENV: process.env.NODE_ENV,
+        env: Object.assign({}, process.env, {
             PACK_ARGS: packArgs
-        }
+        })
     })
 }
 
