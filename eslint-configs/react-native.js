@@ -27,5 +27,6 @@ module.exports = merge(react, {
         global: true,
         window: true,
         navigator: true,
+        __DEV__: true,
     }
 })
