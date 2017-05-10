@@ -39,7 +39,9 @@ module.exports = merge(babel, {
         'react/prefer-stateless-function': 0,
         'react/prop-types': 0,              // 对于使用了 redux 以及 redux-react 里的 connect() 的情况，这条规则不适用
         'react/react-in-jsx-scope': 2,
-        'react/require-default-props': 1,
+        // 有时，我们的 component 需要判断使用者是指定了还是没指定某个 props，以此来调整自己的行为。（已在实际使用中多次确定绝对会有这样的情况）
+        // 设置 defaultProps 会导致无法进行这种判断，因此禁用此规则。
+        'react/require-default-props': 0,
         'react/require-optimization': 0,
         'react/require-render-return': 1,
         'react/self-closing-comp': 2,
