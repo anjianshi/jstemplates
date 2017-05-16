@@ -14,6 +14,10 @@ module.exports = merge(babel, {
     rules: {
         // 用 `method = () => {}` 为 ES6 class 的 method 绑定 this 时，会误触这条 rule，因此将它关闭
         'no-invalid-this': 0,
+        // React 里指定 ref 时会出现 <Elm ref={r => this.child = r} /> 的写法，这个写法违反了这条规则。
+        // 但如果按这条规则要求的写成 ref={r => {this.child = r}}，则既啰嗦又不好看。
+        // 权衡利弊，最终还是决定禁用此规则，在 React 里使用简洁的写法。
+        'no-return-assign': 0,
 
         'react/display-name': 0,
         'react/forbid-component-props': 0,
