@@ -5,6 +5,7 @@ module.exports = {
         require('babel-preset-react-native')
     ],
     plugins: [
+        require('babel-plugin-transform-export-extensions'),
         require('babel-plugin-transform-decorators-legacy').default,
         require('hg-jsx-control-statements')
     ]
