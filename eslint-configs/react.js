@@ -56,7 +56,7 @@ module.exports = merge(babel, {
 
         'react/jsx-boolean-value': 1,
         'react/jsx-closing-bracket-location': 0,
-        'react/jsx-curly-spacing': [1, "never", {spacing: {objectLiterals: "always"}, allowMultiline: true}],
+        'react/jsx-curly-spacing': [1, "never", {spacing: {objectLiterals: "never"}, allowMultiline: true}],
         'react/jsx-equals-spacing': [1, "never"],
         'react/jsx-filename-extension': 0,
         'react/jsx-first-prop-new-line': 0,
