@@ -120,7 +120,8 @@ function basePart(env) {
                     env.hmr.bare ? { from: /./, to: urlJoin(getPublicPath(env), 'index.html') } : undefined
                 ])
             },
-            publicPath: !env.hmr.bare ? '/' : undefined     // 在非 bare 情况下，以 "/" 为基础路径提供文件
+            publicPath: !env.hmr.bare ? '/' : undefined,     // 在非 bare 情况下，以 "/" 为基础路径提供文件
+            disableHostCheck: true,     // https://github.com/webpack/webpack-dev-server/issues/882
         })
     }
 
