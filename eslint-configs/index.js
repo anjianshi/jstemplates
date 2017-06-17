@@ -40,7 +40,15 @@ module.exports = {
         // Best Practices
         'accessor-pairs': 2,
         'array-callback-return': 2,
-        'block-scoped-var': 1,
+        /*
+        try catch block 里经常要利用 var 的特性:
+        ```
+        try { var a = fn(); } catch(e) { return false }
+        return fn2(a)
+        ```
+        因此不启用此规则
+        */
+        'block-scoped-var': 0,
         'class-methods-use-this': 0,
         'complexity': 0,
         'curly': [2, 'multi-line'],
