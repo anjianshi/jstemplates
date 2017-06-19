@@ -319,6 +319,7 @@ function stylePart(env) {
     // 详见 https://github.com/postcss/postcss-loader#usage
     const postcssLoader = {
         loader: 'postcss-loader',
+        options: { sourceMap: true }
     }
     const stylusLoader = { loader: 'stylus-loader' }
 
